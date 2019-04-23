@@ -1,0 +1,35 @@
+# Mac OS X
+.DS_Store
+
+# Adobe Files
+*.psd
+
+# Generated files
+*.[oa]
+*.py[co]
+*.rbc
+
+# Python Packages
+*.egg
+*.egg-info
+eggs
+develop-eggs
+.installed.cfg
+.Python
+pip-log.txt
+
+# Unit test / coverage
+.coverage
+.tox
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+
+# VS Code
+.vscode
