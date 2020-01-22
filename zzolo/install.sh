@@ -43,13 +43,15 @@ PACKAGES=(
   pkg-config
   python
   python@2
+  pyenv
+  pyenv-virtualenv
+  pyenv-virtualenvwrapper
   terminal-notifier
   tree
   vim
   wget
   composer
   drake
-  mongodb
   mdbtools
   mysql
   gcc

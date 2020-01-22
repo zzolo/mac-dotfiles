@@ -67,6 +67,12 @@ if [ -e $HOME/Library/Python/3.7/bin ]; then
   export PATH=$HOME/Library/Python/3.7/bin:$PATH;
 fi
 
+# Pyenv
+if type "pyenv" > /dev/null; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
 
 # Ruby (rbenv)
 ######
@@ -132,3 +138,4 @@ fi
 if [ -e $HOME/.zzolo/sensitive ]; then
   source $HOME/.zzolo/sensitive;
 fi
+export PATH="$HOME/.poetry/bin:$PATH"

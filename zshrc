@@ -78,7 +78,7 @@ plugins=(
 )
 
 # Other custom Oh-my-zsh config
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs virtualenv rbenv)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs virtualenv rbenv nvm)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 DEFAULT_USER=$USER
