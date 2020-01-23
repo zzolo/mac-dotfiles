@@ -1,0 +1,53 @@
+directory: /Volumes/Multimedia/tunes/
+library: ~/.config/beets/beets.db
+
+import:
+  move: no
+  incremental: yes
+  log: ~/.config/beets/beets.log
+
+match:
+  preferred:
+    original_year: yes
+    countries: ["US", "GB|UK"]
+    media: ["CD", "Digital Media|File", "Vinyl", ".*vinyl"]
+    source: ["MusicBrainz"]
+
+# TODO: Utilite the %the{} function
+# https://beets.readthedocs.io/en/stable/plugins/the.html
+paths:
+  default: albums/%upper{%left{$artist_ranked,1}}/$artist_ranked/%if{$year,$year - }$album%aunique{}%if{$missing, (M$missing)}/$track - %if{$different_artist,$artist - }$title
+  "albumartist:Various Artists (Gifts)": gifts/$album%aunique{}/$track - $artist - $title
+  "albumartist:Various Artists (Mixes)": mixes/$album%aunique{}/$track - $artist - $title
+  "albumartist:Various Artists (Loose)": loose/$artist_only_ranked - $title
+  singleton: loose/$artist_only_ranked - $title
+  albumtype:soundtrack: soundtracks/$album%aunique{}/$track - $artist - $title
+  comp: compilations/$album%aunique{}/$track - $artist - $title
+
+# https://beets.readthedocs.io/en/stable/plugins/index.html
+plugins: acousticbrainz discogs fetchart lyrics lastgenre inline embedart missing badfiles duplicates mbsubmit mbsync the edit
+
+item_fields:
+  artist_ranked: albumartist_sort if albumartist_sort else albumartist if albumartist else artist_sort if artist_sort else artist
+  artist_only_ranked: artist_sort if artist_sort else artist
+  different_artist: True if albumartist != artist and not comp else False
+
+embedart:
+  maxwidth: 800
+
+clutter:
+  [
+    "Thumbs.db",
+    ".DS_Store",
+    "*.m3u",
+    "*.pls",
+    "*.nfo",
+    "*.sfv",
+    "*.jpg",
+    "*.jpeg",
+    "*.png",
+    "*.url",
+    "*.URL",
+    "*.txt",
+    "*.ini",
+  ]

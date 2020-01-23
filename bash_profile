@@ -132,6 +132,25 @@ if type "trash" > /dev/null; then
   alias rm='trash'
 fi
 
+# Custom beet wrapper to handle SQLite over network
+# https://github.com/beetbox/beets/issues/1976
+function beetcopy() {
+  if type "beet" > /dev/null; then
+    if [ -e /Volumes/Multimedia/tunes/ ]; then
+      beet "$@" && \
+      cp ~/.config/beets/config.yaml /Volumes/Multimedia/tunes/beets.conf && \
+      cp ~/.config/beets/beets.db /Volumes/Multimedia/tunes/beets.db && \
+      cp ~/.config/beets/beets.log /Volumes/Multimedia/tunes/beets.log;
+    else
+      echo "Music library not found.";
+      exit 1;
+    fi
+  else
+    echo "Beet not found.";
+    exit 1;
+  fi
+}
+
 
 # Sensitive information
 #######
