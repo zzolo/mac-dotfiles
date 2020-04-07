@@ -119,3 +119,11 @@ source $ZSH/oh-my-zsh.sh
 if [ -e $HOME/.bash_profile ]; then
   source $HOME/.bash_profile
 fi
+
+# Zsh specific GCloud
+if [ -e $HOME/.gcloud/google-cloud-sdk/completion.zsh.inc ]; then
+  source $HOME/.gcloud/google-cloud-sdk/completion.zsh.inc
+fi
+if [ -e $HOME/.gcloud/google-cloud-sdk/path.zsh.inc ]; then
+  source $HOME/.gcloud/google-cloud-sdk/path.zsh.inc
+fi

@@ -67,6 +67,11 @@ brew install ${PACKAGES[@]}
 # Link up Python 3
 brew link --overwrite python
 
+# Heroku
+brew tap heroku/brew && brew install heroku
+
+# Gcloud
+
 # Instal RCM for linking dotfiles
 echo "Installing RCM (https://github.com/thoughtbot/rcm)..."
 brew tap thoughtbot/formulae
@@ -143,6 +148,11 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/theme
 
 # Python packages
 pip install awscli csvkit -U
+
+# Glcoud install
+# https://cloud.google.com/sdk/docs/quickstart-macos
+echo "Installing gcloud"
+mkdir -p ~/.gcloud && wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-288.0.0-darwin-x86_64.tar.gz -O ~/Downloads/google-cloud-sdk-288.0.0-darwin-x86_64.tar.gz && tar -zxf ~/Downloads/google-cloud-sdk-288.0.0-darwin-x86_64.tar.gz --directory ~/.gcloud/ && ~/.gcloud/google-cloud-sdk/install.sh
 
 # Info about using RCM
 echo "Now, link the dotfiles with something like: rcup -d /path/to/this/directory [-f]"
