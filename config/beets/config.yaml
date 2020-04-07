@@ -1,3 +1,8 @@
+# Beets config
+#
+# Helpful for review:
+#   * Find albums imported as is: beet ls -a mb_albumid::^$
+
 directory: /Volumes/Multimedia/tunes/
 library: ~/.config/beets/beets.db
 
@@ -15,14 +20,19 @@ match:
 
 # TODO: Utilite the %the{} function
 # https://beets.readthedocs.io/en/stable/plugins/the.html
+#
+# Note that asciify_paths works further up the process, so for
+# instance, it won't apply to a "move" command, hence the use of
+# %asciify{}
+asciify_paths: yes
 paths:
-  default: albums/%upper{%left{$artist_ranked,1}}/$artist_ranked/%if{$year,$year - }$album%aunique{}%if{$missing, (M$missing)}/$track - %if{$different_artist,$artist - }$title
-  "albumartist:Various Artists (Gifts)": gifts/$album%aunique{}/$track - $artist - $title
-  "albumartist:Various Artists (Mixes)": mixes/$album%aunique{}/$track - $artist - $title
-  "albumartist:Various Artists (Loose)": loose/$artist_only_ranked - $title
-  singleton: loose/$artist_only_ranked - $title
-  albumtype:soundtrack: soundtracks/$album%aunique{}/$track - $artist - $title
-  comp: compilations/$album%aunique{}/$track - $artist - $title
+  default: albums/%asciify{%upper{%left{$artist_ranked,1}}/$artist_ranked/%if{$year,$year - }$album%aunique{}%if{$missing, (M$missing)}/$track - %if{$different_artist,$artist - }$title}
+  "albumartist:Various Artists (Gifts)": gifts/%asciify{$album%aunique{}/$track - $artist - $title}
+  "albumartist:Various Artists (Mixes)": mixes/%asciify{$album%aunique{}/$track - $artist - $title}
+  "albumartist:Various Artists (Loose)": loose/%asciify{$artist_only_ranked - $title}
+  singleton: loose/%asciify{$artist_only_ranked - $title}
+  albumtype:soundtrack: soundtracks/%asciify{$album%aunique{}/$track - $artist - $title}
+  comp: compilations/%asciify{$album%aunique{}/$track - $artist - $title}
 
 # https://beets.readthedocs.io/en/stable/plugins/index.html
 plugins: acousticbrainz discogs fetchart lyrics lastgenre inline embedart missing badfiles duplicates mbsubmit mbsync the edit
