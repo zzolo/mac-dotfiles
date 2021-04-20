@@ -1,6 +1,7 @@
 [user]
   name = Alan Palazzolo
-  email = github@zzolo.org
+	email = 190733+zzolo@users.noreply.github.com
+	signingkey = 50EA1DF85CFB3BBD93932FD55D9DF10C8E024FA3
 [core]
   editor = nano
   excludesfile = /Users/zzolo/.gitignore_global
@@ -34,3 +35,9 @@
   user = zzolo
 [credential]
   helper = osxkeychain
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+[commit]
+	gpgsign = true

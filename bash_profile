@@ -66,6 +66,17 @@ fi
 if [ -e $HOME/Library/Python/3.7/bin ]; then
   export PATH=$HOME/Library/Python/3.7/bin:$PATH;
 fi
+if [ -e $HOME/Library/Python/3.8/bin ]; then
+  export PATH=$HOME/Library/Python/3.8/bin:$PATH;
+fi
+if [ -e $HOME/Library/Python/3.9/bin ]; then
+  export PATH=$HOME/Library/Python/3.9/bin:$PATH;
+fi
+
+# Virtualenv wrapper
+# if type "virtualenvwrapper.sh" > /dev/null; then
+#   source $(which virtualenvwrapper.sh)
+# fi
 
 # Pyenv
 if type "pyenv" > /dev/null; then
@@ -73,6 +84,9 @@ if type "pyenv" > /dev/null; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
+
+# Poetry
+export PATH="$HOME/.poetry/bin:$PATH"
 
 # Ruby (rbenv)
 ######
@@ -102,6 +116,18 @@ if [ -e /Applications/Postgres.app/Contents/Versions/latest/bin ]; then
     export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH;
   fi
 fi
+
+
+# Manually installed
+#######
+if [ -e $HOME/Code/installed/bin ]; then
+  export PATH="$HOME/Code/installed/bin:$PATH"
+fi
+
+
+# GPG (commit signing)
+#######
+export GPG_TTY=$(tty)
 
 
 # Core aliases
@@ -144,11 +170,11 @@ function beetcopy() {
       cp ~/.config/beets/beets.log /Volumes/Multimedia/tunes/beets.log;
     else
       echo "Music library not found.";
-      exit 1;
+      return 1;
     fi
   else
     echo "Beet not found.";
-    exit 1;
+    return 1;
   fi
 }
 function beetnocopy() {
@@ -157,11 +183,21 @@ function beetnocopy() {
       beet "$@";
     else
       echo "Music library not found.";
-      exit 1;
+      return 1;
     fi
   else
     echo "Beet not found.";
-    exit 1;
+    return 1;
+  fi
+}
+function beetget() {
+  if [ -e /Volumes/Multimedia/tunes/ ]; then
+    echo "Getting beet files..." && \
+    cp /Volumes/Multimedia/tunes/beets.conf ~/.config/beets/config.yaml && \
+    cp /Volumes/Multimedia/tunes/beets.db ~/.config/beets/beets.db  ;
+  else
+    echo "Music library not found.";
+    return 1;
   fi
 }
 
@@ -171,4 +207,3 @@ function beetnocopy() {
 if [ -e $HOME/.zzolo/sensitive ]; then
   source $HOME/.zzolo/sensitive;
 fi
-export PATH="$HOME/.poetry/bin:$PATH"
