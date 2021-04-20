@@ -168,3 +168,7 @@ fi
 
 # Info about using RCM
 echo "Now, link the dotfiles with something like: rcup -d /path/to/this/directory [-f]"
+
+# Create a new SSH key
+# https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+# ssh-keygen -t ed25519 -C "your_email@example.com"
