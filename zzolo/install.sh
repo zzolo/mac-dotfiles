@@ -11,6 +11,7 @@ fi
 
 echo "Updating homebrew packages..."
 brew update --force
+export PATH="/usr/local/sbin:$PATH";
 
 # Core linux utilities
 echo "Installing core homebrew packages..."
@@ -54,7 +55,8 @@ PACKAGES=(
   openssl
   yarn
   sqlite
-  gdal
+  gpg
+  pinentry-mac
 )
 
 echo "Installing homebrew packages..."
@@ -143,15 +145,26 @@ echo "Installing powerline theme"
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 # Python packages
-pip install csvkit -U
+pip install -U awscli csvkit
 # Beets and plugins
 pip install -U git+https://github.com/beetbox/beets@master#egg=beets
-pip install discogs_client pylast beautifulsoup4 -U
+pip install -U discogs_client pylast beautifulsoup4
 
 # Glcoud install
 # https://cloud.google.com/sdk/docs/quickstart-macos
 echo "Installing gcloud"
 mkdir -p ~/.gcloud && wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-288.0.0-darwin-x86_64.tar.gz -O ~/Downloads/google-cloud-sdk-288.0.0-darwin-x86_64.tar.gz && tar -zxf ~/Downloads/google-cloud-sdk-288.0.0-darwin-x86_64.tar.gz --directory ~/.gcloud/ && ~/.gcloud/google-cloud-sdk/install.sh
+
+# Keybase
+if type "keybase" > /dev/null; then
+  export GPG_TTY=$(tty)
+  keybase pgp pull
+  keybase pgp export | gpg --import
+  keybase pgp export -s | gpg --allow-secret-key-import --import
+  echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+else
+  echo "Keybase cli not installed; please install it."
+fi
 
 # Info about using RCM
 echo "Now, link the dotfiles with something like: rcup -d /path/to/this/directory [-f]"
