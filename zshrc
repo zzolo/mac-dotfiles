@@ -127,3 +127,5 @@ fi
 if [ -e $HOME/.gcloud/google-cloud-sdk/path.zsh.inc ]; then
   source $HOME/.gcloud/google-cloud-sdk/path.zsh.inc
 fi
+
+export PATH="$HOME/.poetry/bin:$PATH"

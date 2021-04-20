@@ -143,7 +143,10 @@ echo "Installing powerline theme"
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 # Python packages
-pip install awscli csvkit -U
+pip install csvkit -U
+# Beets and plugins
+pip install -U git+https://github.com/beetbox/beets@master#egg=beets
+pip install discogs_client pylast beautifulsoup4 -U
 
 # Glcoud install
 # https://cloud.google.com/sdk/docs/quickstart-macos
