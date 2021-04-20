@@ -30,9 +30,7 @@ PACKAGES=(
   autoconf
   automake
   ffmpeg
-  gifsicle
   git
-  graphviz
   hub
   imagemagick
   jq
@@ -42,7 +40,6 @@ PACKAGES=(
   node
   pkg-config
   python
-  python@2
   pyenv
   pyenv-virtualenv
   pyenv-virtualenvwrapper
@@ -51,7 +48,6 @@ PACKAGES=(
   vim
   wget
   composer
-  drake
   mdbtools
   mysql
   gcc
@@ -70,6 +66,10 @@ brew link --overwrite python
 # Heroku
 brew tap heroku/brew && brew install heroku
 
+# Terraform
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
+
 # Gcloud
 
 # Instal RCM for linking dotfiles
@@ -77,14 +77,11 @@ echo "Installing RCM (https://github.com/thoughtbot/rcm)..."
 brew tap thoughtbot/formulae
 brew install rcm
 
-# Install cask
-brew tap homebrew/cask
-brew cask install phantomjs
-
-# Instal homebrew cask font
+# Instal homebrew cask font (svn, seriously?)
 echo "Installing cask-fonts and fonts..."
+brew install svn
 brew tap homebrew/cask-fonts
-brew cask install \
+brew install \
   font-anonymous-pro \
   font-dejavu-sans-mono-for-powerline \
   font-droid-sans-mono-for-powerline \
@@ -105,14 +102,13 @@ curl "https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS" > ~
 echo "Installing global npm packages..."
 NPM_PACKAGES=(
   yo
-  gulp-cli
   eslint
   trash-cli
 )
 npm install -g ${NPM_PACKAGES[@]}
 
 echo "Install NVM"
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
 echo "Mac configuration..."
 # Require password as soon as screensaver or sleep mode starts
