@@ -37,7 +37,8 @@ paths:
 
 # https://beets.readthedocs.io/en/stable/plugins/index.html
 # master: unimported
-plugins: discogs fetchart lyrics lastgenre inline embedart missing badfiles duplicates mbsubmit mbsync the edit convert
+# Not working: lyrics
+plugins: discogs fetchart lastgenre inline embedart missing badfiles duplicates mbsubmit mbsync the edit convert
 
 item_fields:
   artist_ranked: albumartist_sort if albumartist_sort else albumartist if albumartist else artist_sort if artist_sort else artist

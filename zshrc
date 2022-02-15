@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,8 +15,9 @@ export ZSH=$HOME/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-if [ -e $HOME/.oh-my-zsh/custom/themes/powerlevel9k ]; then
-  ZSH_THEME="powerlevel9k/powerlevel9k"
+
+if [ -e $HOME/.oh-my-zsh/custom/themes/powerlevel10k ]; then
+  ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
 
 # Set list of themes to load
@@ -68,19 +76,23 @@ plugins=(
   git
   ruby
   golang
-  django
   gem
   history
   aws
   colorize
   gulp
   heroku
+  node
+  nvm
+  npm
+  brew
+  #pyenv
+  python
+  zsh-autosuggestions
 )
 
 # Other custom Oh-my-zsh config
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs virtualenv rbenv nvm)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_VIRTUALENV_GENERIC_NAMES=(virtualenv venv .venv env)
 DEFAULT_USER=$USER
 
 # Run Oh-my-zsh
@@ -116,8 +128,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Include bash profile
-if [ -e $HOME/.bash_profile ]; then
-  source $HOME/.bash_profile
+if [ -e $HOME/.profile ]; then
+  source $HOME/.profile
 fi
 
 # Zsh specific GCloud
@@ -128,4 +140,5 @@ if [ -e $HOME/.gcloud/google-cloud-sdk/path.zsh.inc ]; then
   source $HOME/.gcloud/google-cloud-sdk/path.zsh.inc
 fi
 
-export PATH="$HOME/.poetry/bin:$PATH"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

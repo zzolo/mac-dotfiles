@@ -140,20 +140,29 @@ defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
 echo "Installing Oh My Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# Get powerline theme
-echo "Installing powerline theme"
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+# Get custom plugins for Oh My Zsh
+echo "Installing custom plugins for Oh My Zsh"
+git clone https://github.com/bhilburn/powerlevel9k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}themes/powerlevel9k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# The p10k config is everything, so not worth having our own
+echo "Suggested to configure Powerline 10k with: p10k configure"
 
 # Python packages
 echo "Installing global Python packages..."
-pip install -U awscli csvkit
+pip install -U csvkit
 # Beets and plugins
 pip install -U git+https://github.com/beetbox/beets@master#egg=beets
-pip install -U discogs_client pylast beautifulsoup4
+pip install -U discogs_client pylast beautifulsoup4 requests
 
 # Install poetry
 echo "Installing Poetry..."
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+
+# Install AWS cli
+echo "Installing AWS CLI (install for all, as errors have happened for local)..."
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o ~/Downloads/AWSCLIV2.pkg && open ~/Downloads/AWSCLIV2.pkg
 
 # Glcoud install
 # https://cloud.google.com/sdk/docs/quickstart-macos
