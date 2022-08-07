@@ -3,14 +3,18 @@
 # Helpful for review:
 #   * Find albums imported as is: beet ls -a mb_albumid::^$
 
+# The files will go to
 directory: /Volumes/Multimedia/tunes/
+# Location of database
 library: ~/.config/beets/beets.db
 
+# Default import options
 import:
   move: no
   incremental: yes
   log: ~/.config/beets/beets.log
 
+# Match preferences
 match:
   preferred:
     original_year: yes
@@ -18,8 +22,9 @@ match:
     media: ["CD", "Digital Media|File", "Vinyl", ".*vinyl"]
     source: ["MusicBrainz"]
 
-# TODO: Utilite the %the{} function
-# https://beets.readthedocs.io/en/stable/plugins/the.html
+# Naming of files when importing
+#
+# (see plugins as well)
 #
 # Note that asciify_paths works further up the process, so for
 # instance, it won't apply to a "move" command, hence the use of
@@ -31,23 +36,26 @@ paths:
   "albumartist:Various Artists (Mixes)": mixes/%asciify{$album%aunique{}/$track - $artist - $title}
   "albumartist:Various Artists (Loose)": loose/%asciify{$artist_only_ranked - $title}
   singleton: loose/%asciify{$artist_only_ranked - $title}
-  # beetcopy modify -a "winnie" albumtype="soundtrack"
+  # Example to modify an import to be a soundtrack: beetcopy modify -a "winnie" albumtype="soundtrack"
   albumtype:soundtrack: soundtracks/%asciify{$album%aunique{}/$track - $artist - $title}
   comp: compilations/%asciify{$album%aunique{}/$track - $artist - $title}
 
-# https://beets.readthedocs.io/en/stable/plugins/index.html
-# master: unimported
-# Not working: lyrics
-plugins: discogs fetchart lastgenre inline embedart missing badfiles duplicates mbsubmit mbsync the edit convert
-
+# Custom fields to use in paths
 item_fields:
   artist_ranked: albumartist_sort if albumartist_sort else albumartist if albumartist else artist_sort if artist_sort else artist
   artist_only_ranked: artist_sort if artist_sort else artist
   different_artist: True if albumartist != artist and not comp else False
 
+# Plugins
+# https://beets.readthedocs.io/en/stable/plugins/index.html
+# Not working: lyrics
+plugins: discogs fetchart lastgenre inline embedart missing badfiles duplicates mbsubmit mbsync the edit convert
+
+# Art
 embedart:
   maxwidth: 800
 
+# Ignore
 clutter:
   [
     "Thumbs.db",

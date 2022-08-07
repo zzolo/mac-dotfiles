@@ -32,10 +32,10 @@ if [ -e $NPM_PACKAGES/bin ]; then
   PATH=$NPM_PACKAGES/bin:$PATH;
 fi
 
-# Homebrew node location
-if [ -e "$(brew --prefix node)/bin" ]; then
-  export PATH="$(brew --prefix node)/bin:$PATH"
-fi
+# Homebrew node location (messes with NVM)
+# if [ -e "$(brew --prefix node)/bin" ]; then
+#   export PATH="$(brew --prefix node)/bin:$PATH"
+# fi
 
 if [ -e $NPM_PACKAGES/share/man ]; then
   unset MANPATH;
@@ -88,6 +88,12 @@ fi
 # Poetry
 if type "pyenv" > /dev/null; then
   export PATH="$HOME/.poetry/bin:$PATH"
+fi
+
+# PHP (composer)
+######
+if [ -e $HOME/.composer/vendor/bin ]; then
+  export PATH="$HOME/.composer/vendor/bin:$PATH"
 fi
 
 # Ruby (rbenv)
