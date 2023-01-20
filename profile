@@ -86,8 +86,9 @@ if type "pyenv" > /dev/null; then
 fi
 
 # Poetry
-if type "pyenv" > /dev/null; then
+if type "poetry" > /dev/null; then
   export PATH="$HOME/.poetry/bin:$PATH"
+  export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # PHP (composer)
