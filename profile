@@ -45,12 +45,15 @@ fi
 # NVM support
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s $(brew --prefix nvm)/nvm.sh ] && source $(brew --prefix nvm)/nvm.sh
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 
 # Python
 # (pip with --user, and Homebrew python)
 ######
+
+# ??
 if [ -e /usr/local/opt/python/libexec/bin ]; then
   export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 fi
@@ -81,8 +84,9 @@ fi
 if type "pyenv" > /dev/null; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
+  export PATH="$PYENV_ROOT/shims:$PATH"
   eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
+  #eval "$(pyenv virtualenv-init -)"
 fi
 
 # Poetry
@@ -125,6 +129,10 @@ if [ -e /Applications/Postgres.app/Contents/Versions/latest/bin ]; then
     export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH;
   fi
 fi
+
+# Alternative with just homebrew
+# brew install libpq
+# export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 
 # Manually installed

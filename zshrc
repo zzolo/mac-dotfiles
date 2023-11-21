@@ -88,11 +88,11 @@ plugins=(
   brew
   #pyenv
   python
+  virtualenv
   zsh-autosuggestions
 )
 
 # Other custom Oh-my-zsh config
-POWERLEVEL9K_VIRTUALENV_GENERIC_NAMES=(virtualenv venv .venv env)
 DEFAULT_USER=$USER
 
 # Run Oh-my-zsh

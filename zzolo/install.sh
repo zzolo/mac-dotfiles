@@ -1,6 +1,8 @@
 #! /bin/sh
 
-# Install scripts
+# Install scripts.  Note that this could technically be run, but
+# it is unlikely to actually work, so it is more meant to be a
+# reference to copy-paste from.
 #####
 
 # Check for Homebrew, install if we don't have it
@@ -36,14 +38,9 @@ PACKAGES=(
   imagemagick
   jq
   libjpeg
-  libmemcached 
-  memcached
   node
   pkg-config
-  python
   pyenv
-  pyenv-virtualenv
-  pyenv-virtualenvwrapper
   terminal-notifier
   tree
   vim
@@ -69,8 +66,7 @@ brew link --overwrite python
 brew tap heroku/brew && brew install heroku
 
 # Terraform
-brew tap hashicorp/tap
-brew install hashicorp/tap/terraform
+brew tap hashicorp/tap && brew install hashicorp/tap/terraform
 
 # Gcloud
 
@@ -103,14 +99,13 @@ curl "https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS" > ~
 
 echo "Installing global npm packages..."
 NPM_PACKAGES=(
-  yo
   eslint
   trash-cli
 )
 npm install -g ${NPM_PACKAGES[@]}
 
 echo "Install NVM"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 echo "Mac configuration..."
 # Require password as soon as screensaver or sleep mode starts
@@ -136,9 +131,13 @@ defaults write com.apple.finder QLEnableTextSelection -bool true
 defaults write -g PMPrintingExpandedStateForPrint -bool true
 defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
 
+# Default screenshot location away from Desktop
+mkdir -p ~/Pictures/Screenshots
+defaults write com.apple.screencapture location ~/Pictures/Screenshots
+
 # Oh My Zsh
 echo "Installing Oh My Zsh..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Get custom plugins for Oh My Zsh
 echo "Installing custom plugins for Oh My Zsh"
@@ -158,7 +157,7 @@ pip install -U discogs_client pylast beautifulsoup4 requests
 
 # Install poetry
 echo "Installing Poetry..."
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+curl -sSL https://install.python-poetry.org | python3 -
 
 # Install AWS cli
 echo "Installing AWS CLI (install for all, as errors have happened for local)..."
@@ -182,7 +181,52 @@ else
 fi
 
 # Info about using RCM
-echo "Now, link the dotfiles with something like: rcup -d /path/to/this/directory [-f]"
+# TODO: RCM is not really updated, doesn't support spaces, and doesn't support directories
+# without dots (i.e. Library), so should find another solution.
+# TODO: Is the absolute path needed here?
+echo "Now, link the dotfiles with something like: rcup -d $(pwd)/ [-f]"
+
+# Manually link up the Library (VS Code) files.
+echo "Linking VS Code settings..."
+VS_CODE_SETTINGS_DIR=~/Library/Application\ Support/Code/User
+mkdir -p $VS_CODE_SETTINGS_DIR
+if test -f "$VS_CODE_SETTINGS_DIR/settings.json"; then
+  mv "$VS_CODE_SETTINGS_DIR/settings.json" "$VS_CODE_SETTINGS_DIR/settings.json.bak"
+fi
+ln -s $(pwd)/Library/Application\ Support/Code/User/settings.json "$VS_CODE_SETTINGS_DIR/settings.json"
+
+# VS Code extensions
+echo "Installing VS Code extensions..."
+if type "code" > /dev/null; then
+  # Python
+  code --install-extension ms-python.python
+  code --install-extension ms-python.vscode-pylance
+  code --install-extension njpwerner.autodocstring
+  code --install-extension charliermarsh.ruff
+  code --install-extension ms-toolsai.jupyter
+  code --install-extension tamasfe.even-better-toml
+
+  # JS
+  code --install-extension rvest.vs-code-prettier-eslint
+  code --install-extension dbaeumer.vscode-eslint
+  code --install-extension svelte.svelte-vscode
+
+  # Github
+  code --install-extension GitHub.copilot
+  code --install-extension github.vscode-github-actions
+
+  # Other
+  code --install-extension EditorConfig.EditorConfig
+  code --install-extension esbenp.prettier-vscode
+  code --install-extension johnpapa.vscode-peacock
+  code --install-extension mechatroner.rainbow-csv
+  code --install-extension ms-azuretools.vscode-docker
+  code --install-extension redhat.vscode-yaml
+  code --install-extension streetsidesoftware.code-spell-checker
+
+else
+  echo "VS Code cli not installed; please install it."
+fi
 
 # Create a new SSH key
 # https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
