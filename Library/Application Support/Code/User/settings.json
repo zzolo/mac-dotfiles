@@ -13,7 +13,7 @@
     "editor.inlineSuggest.enabled": true,
     "editor.wordWrap": "on",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+      "source.fixAll.eslint": "explicit"
     },
 
     // Exclude files from showing up in browser
@@ -27,8 +27,8 @@
       "editor.defaultFormatter": "charliermarsh.ruff",
       //"editor.defaultFormatter": "ms-python.black-formatter",
       "editor.codeActionsOnSave": {
-        "source.fixAll.ruff": true,
-        "source.organizeImports.ruff": true
+        "source.fixAll.ruff": "explicit",
+        "source.organizeImports.ruff": "explicit"
       }
     },
 
