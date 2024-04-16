@@ -1,110 +1,112 @@
 {
-    // General workbench / editor
-    "workbench.startupEditor": "none",
-    "workbench.colorCustomizations": {},
-    "workbench.tree.indent": 16,
+  // General workbench / editor
+  "workbench.startupEditor": "none",
+  "workbench.colorCustomizations": {},
+  "workbench.tree.indent": 16,
 
-    // Explorer
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
+  // Explorer
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
 
-    // Editor
-    "editor.formatOnSave": true,
-    "editor.inlineSuggest.enabled": true,
-    "editor.wordWrap": "on",
+  // Editor
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.wordWrap": "on",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Exclude files from showing up in browser
+  "files.exclude": {
+    "**/__pycache*": true
+  },
+
+  // Python
+  "[python]": {
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    //"editor.defaultFormatter": "ms-python.black-formatter",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    },
-
-    // Exclude files from showing up in browser
-    "files.exclude": {
-      "**/__pycache*": true
-    },
-
-    // Python
-    "[python]": {
-      "editor.formatOnType": true,
-      "editor.defaultFormatter": "charliermarsh.ruff",
-      //"editor.defaultFormatter": "ms-python.black-formatter",
-      "editor.codeActionsOnSave": {
-        "source.fixAll.ruff": "explicit",
-        "source.organizeImports.ruff": "explicit"
-      }
-    },
-
-    // JS
-    "[javascript]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "eslint.format.enable": true,
-    "eslint.validate": [
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact"
-    ],
-
-    // Svelte
-    "[svelte]": {
-      "editor.defaultFormatter": "svelte.svelte-vscode"
-    },
-    "svelte.enable-ts-plugin": true,
-
-    //  JSON
-    "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-
-    // Markdown
-    "[markdown]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-
-    // Spelling
-    "cSpell.userWords": [
-      "boto",
-      "capsys",
-      "colour",
-      "dataframe",
-      "dotenv",
-      "psycopg",
-      "pyscopg",
-      "sqlalchemy"
-    ],
-
-    // Peacock
-    "peacock.surpriseMeOnStartup": true,
-    "redhat.telemetry.enabled": false,
-
-    // Theme
-    "workbench.colorTheme": "Default Dark Modern",
-    "editor.tokenColorCustomizations": {
-      "[Default Dark Modern]": {
-        "textMateRules": [
-          {
-            // Default comments more muted
-            "scope": [
-              "comment",
-              "comment.block",
-              "punctuation.definition.comment.end",
-              "punctuation.definition.comment.begin"
-            ],
-            "settings": {
-              "foreground": "#676767",
-            }
-          },
-          {
-            // Comments blocks and docstrings more prominent
-            "scope": [
-              "comment.block.documentation",
-              "string.quoted.docstring"
-            ],
-            "settings": {
-              "foreground": "#337659",
-            }
-          },
-        ]
-      }
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
     }
-  }
-  
+  },
+
+  // JS
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.format.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "svelte"
+  ],
+
+  // Svelte
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "svelte.enable-ts-plugin": true,
+
+  //  JSON
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Markdown
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Spelling
+  "cSpell.userWords": [
+    "boto",
+    "capsys",
+    "colour",
+    "dataframe",
+    "dotenv",
+    "psycopg",
+    "pyscopg",
+    "sqlalchemy"
+  ],
+
+  // Peacock
+  "peacock.surpriseMeOnStartup": true,
+  "redhat.telemetry.enabled": false,
+
+  // Theme
+  "workbench.colorTheme": "Default Dark Modern",
+  "editor.tokenColorCustomizations": {
+    "[Default Dark Modern]": {
+      "textMateRules": [
+        {
+          // Default comments more muted
+          "scope": [
+            "comment",
+            "comment.block",
+            "punctuation.definition.comment.end",
+            "punctuation.definition.comment.begin"
+          ],
+          "settings": {
+            "foreground": "#676767"
+          }
+        },
+        {
+          // Comments blocks and docstrings more prominent
+          "scope": ["comment.block.documentation", "string.quoted.docstring"],
+          "settings": {
+            "foreground": "#337659"
+          }
+        }
+      ]
+    }
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always"
+}
