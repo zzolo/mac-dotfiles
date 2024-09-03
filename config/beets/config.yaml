@@ -35,11 +35,16 @@ paths:
   "albumartist:Various Artists (Gifts)": gifts/%asciify{$album%aunique{}/$track - $artist - $title}
   "albumartist:Various Artists (Mixes)": mixes/%asciify{$album%aunique{}/$track - $artist - $title}
   "albumartist:Various Artists (Loose)": loose/%asciify{$artist_only_ranked - $title}
-  # TODO: beet import --timid --singletons --noautotag --set albumartist="Various Artists (Loose)" --set album="Loose" file.mp3
+
+  # Singleton commands:
+  # beet import --timid --singletons --noautotag --set albumartist="Various Artists (Loose)" --set album="Loose" file.mp3 &&
   # beet modify thing albumartist="Various Artists (Loose)" album="Loose" track="" disc="1"
   singleton: loose/%asciify{$artist_only_ranked - $title}
-  # Example to modify an import to be a soundtrack: beetcopy modify -a "winnie" albumtype="soundtrack"
+
+  # Example to modify an import to be a soundtrack:
+  # beetcopy modify -a "winnie" albumtype="soundtrack"
   albumtype:soundtrack: soundtracks/%asciify{$album%aunique{}/$track - $artist - $title}
+
   # TODO: What notes a "comp" album?
   comp: compilations/%asciify{$album%aunique{}/$track - $artist - $title}
 
