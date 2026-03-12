@@ -172,10 +172,10 @@ mkdir -p ~/.gcloud && wget https://dl.google.com/dl/cloudsdk/channels/rapid/down
 echo "Installing Keybase (and keys)..."
 if type "keybase" > /dev/null; then
   export GPG_TTY=$(tty)
-  keybase pgp pull && \
-  keybase pgp export | gpg --import && \
-  keybase pgp export -s | gpg --allow-secret-key-import --import && \
-  echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+    keybase pgp pull && \
+    keybase pgp export | gpg --import && \
+    keybase pgp export -s | gpg --allow-secret-key-import --import && \
+    echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
 else
   echo "Keybase cli not installed; please install it."
 fi
