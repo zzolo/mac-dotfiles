@@ -149,9 +149,9 @@ export GPG_TTY=$(tty)
 
 # Core aliases
 #####
-alias ls='ls -Gah1';
-alias mkdir='mkdir -p';
-alias reload='source ~/.bash_profile';
+alias ls='ls -Gah1'
+alias mkdir='mkdir -p'
+alias reload='source ~/.bash_profile'
 alias cleardns='dscacheutil -flushcache'
 alias locate-update='/usr/libexec/locate.updatedb'
 alias python-http='python -m SimpleHTTPServer 8000'

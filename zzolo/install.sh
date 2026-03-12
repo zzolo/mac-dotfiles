@@ -29,31 +29,19 @@ brew install findutils
 
 # General packages without arguments
 PACKAGES=(
-  ack
-  autoconf
-  automake
   ffmpeg
   git
   hub
-  imagemagick
   jq
-  libjpeg
   node
-  pkg-config
   pyenv
-  terminal-notifier
-  tree
   vim
   wget
-  composer
-  mdbtools
-  mysql
-  gcc
-  openssl
   yarn
   sqlite
   gpg
   pinentry-mac
+  rcm
 )
 
 echo "Installing homebrew packages..."
@@ -68,28 +56,20 @@ brew tap heroku/brew && brew install heroku
 # Terraform
 brew tap hashicorp/tap && brew install hashicorp/tap/terraform
 
-# Gcloud
-
-# Instal RCM for linking dotfiles
-echo "Installing RCM (https://github.com/thoughtbot/rcm)..."
-brew tap thoughtbot/formulae
-brew install rcm
-
-# Instal homebrew cask font (svn, seriously?)
+# Instal homebrew cask font
 echo "Installing cask-fonts and fonts..."
-brew install svn
 brew tap homebrew/cask-fonts
 brew install \
-  font-anonymous-pro \
-  font-dejavu-sans-mono-for-powerline \
-  font-droid-sans-mono-for-powerline \
-  font-meslo-lg \
-  font-meslo-for-powerline \
-  font-source-code-pro \
-  font-source-code-pro-for-powerline \
-  font-source-sans-pro \
-  font-fontawesome \
-  font-awesome-terminal-fonts
+  homebrew/cask-fonts/font-anonymous-pro \
+  homebrew/cask-fonts/font-dejavu-sans-mono-for-powerline \
+  homebrew/cask-fonts/font-droid-sans-mono-for-powerline \
+  homebrew/cask-fonts/font-meslo-lg \
+  homebrew/cask-fonts/font-meslo-for-powerline \
+  homebrew/cask-fonts/font-source-code-pro \
+  homebrew/cask-fonts/font-source-code-pro-for-powerline \
+  homebrew/cask-fonts/font-source-sans-pro \
+  homebrew/cask-fonts/font-fontawesome \
+  homebrew/cask-fonts/font-awesome-terminal-fonts
 
 echo "Cleaning homebrew up..."
 brew cleanup
