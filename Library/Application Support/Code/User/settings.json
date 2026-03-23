@@ -14,12 +14,12 @@
   "editor.wordWrap": "on",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
   },
 
   // Exclude files from showing up in browser
   "files.exclude": {
-    "**/__pycache*": true
+    "**/__pycache*": true,
   },
 
   // Python
@@ -29,13 +29,13 @@
     //"editor.defaultFormatter": "ms-python.black-formatter",
     "editor.codeActionsOnSave": {
       "source.fixAll.ruff": "explicit",
-      "source.organizeImports.ruff": "explicit"
-    }
+      "source.organizeImports.ruff": "explicit",
+    },
   },
 
   // JS
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "eslint.format.enable": true,
   "eslint.validate": [
@@ -43,23 +43,23 @@
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "svelte"
+    "svelte",
   ],
 
   // Svelte
   "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode"
+    "editor.defaultFormatter": "svelte.svelte-vscode",
   },
   "svelte.enable-ts-plugin": true,
 
   //  JSON
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // Markdown
   "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // Spelling
@@ -71,7 +71,9 @@
     "dotenv",
     "psycopg",
     "pyscopg",
-    "sqlalchemy"
+    "sqlalchemy",
+    "tabaxi",
+    "tiefling",
   ],
 
   // Peacock
@@ -89,26 +91,26 @@
             "comment",
             "comment.block",
             "punctuation.definition.comment.end",
-            "punctuation.definition.comment.begin"
+            "punctuation.definition.comment.begin",
           ],
           "settings": {
-            "foreground": "#676767"
-          }
+            "foreground": "#676767",
+          },
         },
         {
           // Comments blocks and docstrings more prominent
           "scope": ["comment.block.documentation", "string.quoted.docstring"],
           "settings": {
-            "foreground": "#337659"
-          }
-        }
-      ]
-    }
+            "foreground": "#337659",
+          },
+        },
+      ],
+    },
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
   "github.copilot.editor.enableAutoCompletions": true,
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
 }
