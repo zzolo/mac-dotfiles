@@ -1,10 +1,13 @@
-# Don't
+# Don't commit but stow
 .gitconfig
 
 # Directory linked
 .config/beets/*
 !.config/beets/config.yaml
 !.config/beets/examples.sh
+
+# Editor
+.vscode
 
 # OS
 .DS_Store
