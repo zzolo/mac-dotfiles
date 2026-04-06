@@ -1,10 +1,10 @@
 [user]
   name = Alan Palazzolo
 	email = 190733+zzolo@users.noreply.github.com
-	signingkey = 50EA1DF85CFB3BBD93932FD55D9DF10C8E024FA3
+	# signingkey = CREATE NEW ONE
 [core]
   editor = nano
-  excludesfile = /Users/zzolo/.gitignore_global
+  excludesfile = /Users/zzolo/.gitignore-global
   quotepath = false
 [color]
   diff = auto
@@ -33,12 +33,14 @@
   today = diff --stat @{yesterday}..HEAD
 [github]
   user = zzolo
-[credential]
-  helper = osxkeychain
 [init]
 	defaultBranch = main
 [pull]
 	rebase = false
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [commit]
 	gpgsign = true
 [filter "lfs"]

@@ -1,9 +1,24 @@
-Dotfiles for Mac
+# Dotfiles for Mac
 
 ## System setup
 
-Run: `zzolo/install.sh`
+Probably want to copy and paste from here, but in theory could run: `setup.sh`
+
+## Sensitive templates
+
+```sh
+cp .gitconfig-example .gitconfig
+```
 
 ## Link up dotfiles
 
-Run: `rcup -d ./`
+Dry run to see what will happen: `stow -nv -t ~ ./`
+
+Run:
+
+```sh
+rm ~/.gitconfig
+rm ~/.zprofile
+rm ~/.zshrc
+stow -v -t ~ ./
+```

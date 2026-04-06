@@ -1,3 +1,10 @@
-ssh/config
-zzolo/sensitive
-.vscode
+# Don't
+.gitconfig
+
+# Directory linked
+.config/beets/*
+!.config/beets/config.yaml
+!.config/beets/examples.sh
+
+# OS
+.DS_Store
