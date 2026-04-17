@@ -22,3 +22,8 @@ rm ~/.zprofile
 rm ~/.zshrc
 stow -v -t ~ ./
 ```
+
+## Manual setup
+
+1. 1Password git signing
+   - https://developer.1password.com/docs/ssh/git-commit-signing/
