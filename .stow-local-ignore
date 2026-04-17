@@ -3,6 +3,7 @@
 \.gitignore
 \.gitconfig-example
 \.editorconfig
+\.vscode
 
 setup.sh
 README.md

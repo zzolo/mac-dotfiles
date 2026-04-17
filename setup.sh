@@ -45,6 +45,10 @@ PACKAGES=(
   # Shell/prompt
   stow
   starship
+
+  # Fonts
+  # https://www.nerdfonts.com/font-downloads
+  # brew install --cask font-<FONT NAME>-nerd-font
   font-hack-nerd-font
 )
 
@@ -53,9 +57,6 @@ brew install ${PACKAGES[@]}
 
 echo "Cleaning homebrew up..."
 brew cleanup
-
-# Custom LS_COLORS
-curl "https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS" > ~/.dircolors
 
 echo "Mac configuration..."
 # Require password as soon as screensaver or sleep mode starts
