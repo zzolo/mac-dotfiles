@@ -1,5 +1,5 @@
 # .zprofile is loaded once per login session to set up environment variables (like PATH),
-# 
+#
 
 
 # Homebrew
@@ -30,10 +30,18 @@ fi
 
 
 # NVM support
+########
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s $(brew --prefix nvm)/nvm.sh ] && source $(brew --prefix nvm)/nvm.sh
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+
+# FNM
+########
+if type "fnm" > /dev/null; then
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi
 
 
 # PHP (composer)
