@@ -7,6 +7,7 @@
   // Explorer
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "explorer.decorations.colors": true,
 
   // Editor
   "editor.formatOnSave": true,
