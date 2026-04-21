@@ -95,13 +95,6 @@ if [ -e $HOME/Code/installed/bin ]; then
 fi
 
 
-# Sensitive information
-#######
-if [ -e $HOME/.zzolo/sensitive ]; then
-  source $HOME/.zzolo/sensitive;
-fi
-
-
 # Variables
 #####
 export CLICOLOR=1
