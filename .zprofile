@@ -102,3 +102,6 @@ export EDITOR=nano
 if type "code" > /dev/null; then
   export EDITOR=code
 fi
+if type "code-insiders" > /dev/null; then
+  export EDITOR=code-insiders
+fi
