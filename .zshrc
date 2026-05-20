@@ -88,6 +88,7 @@ plugins=(
   python
   virtualenv
   zsh-autosuggestions
+  uv
 )
 
 source $ZSH/oh-my-zsh.sh
