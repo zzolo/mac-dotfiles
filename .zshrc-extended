@@ -6,6 +6,14 @@ if type "starship" > /dev/null; then
     eval "$(starship init zsh)"
 fi
 
+# Editors
+if type "code" > /dev/null; then
+  export EDITOR=code
+fi
+if type "code-insiders" > /dev/null; then
+  export EDITOR=code-insiders
+fi
+
 # Core aliases
 #####
 alias ls='ls -Gah1'
@@ -25,63 +33,9 @@ if type "gls" > /dev/null; then
   alias ls='gls -Gah1 --color';
 fi
 
-# Use hub if installed
-if type "hub" > /dev/null; then
-  alias git=hub;
-fi
-
-# Poe tasks if uv
-if type "uv" > /dev/null; then
-  alias po='uv run poe'
-fi
-
 # User specific rc that shouldn't be in version control.
 if [ -e $HOME/.zshrc-user ]; then
   source ~/.zshrc-user
-fi
-
-# Use trash instead of rm/rmdir when available.
-# rm() filters flags trash doesn't support (e.g. -rf, -r, -f, -i).
-if type "trash" > /dev/null; then
-  function rm() {
-    local -a files
-    local verbose=false
-    local help=false
-    local end_of_flags=false
-
-    for arg in "$@"; do
-      if $end_of_flags; then
-        files+=("$arg")
-      elif [[ "$arg" == "--" ]]; then
-        end_of_flags=true
-      elif [[ "$arg" == "-h" || "$arg" == "--help" ]]; then
-        help=true
-      elif [[ "$arg" == -* ]]; then
-        # Preserve verbose; silently drop -r/-f/-i/-d/-R etc.
-        [[ "$arg" == *v* ]] && verbose=true
-      else
-        files+=("$arg")
-      fi
-    done
-
-    if $help; then
-      trash --help
-      return
-    fi
-
-    if [[ ${#files[@]} -eq 0 ]]; then
-      echo "rm: missing operand" >&2
-      return 1
-    fi
-
-    echo "Using trash instead of rm"
-    if $verbose; then
-      trash -v "${files[@]}"
-    else
-      trash "${files[@]}"
-    fi
-  }
-  alias rmdir='rm'
 fi
 
 
