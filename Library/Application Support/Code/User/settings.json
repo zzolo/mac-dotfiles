@@ -1,7 +1,6 @@
 {
   // General workbench / editor
   "workbench.startupEditor": "none",
-  "workbench.colorCustomizations": {},
   "workbench.tree.indent": 16,
 
   // Explorer
