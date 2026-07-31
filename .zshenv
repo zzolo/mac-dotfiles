@@ -11,8 +11,12 @@ if [ -e /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 fi
 if [ -e /usr/local/sbin ]; then
+  echo $PATH
   export PATH="/usr/local/sbin:$PATH";
+  export PATH="/opt/homebrew/bin:$PATH"
 fi
+
+
 # GNU version of tools
 if [ -e /usr/local/opt/gnu-sed/libexec/gnubin ]; then
   export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH";

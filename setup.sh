@@ -46,6 +46,9 @@ PACKAGES=(
   stow
   starship
 
+  # tmux-like
+  herdr
+
   # Fonts
   # https://www.nerdfonts.com/font-downloads
   # brew install --cask font-<FONT NAME>-nerd-font
@@ -145,4 +148,11 @@ if type "code" > /dev/null; then
   code --install-extension streetsidesoftware.code-spell-checker
 else
   echo "VS Code cli not installed; please install it."
+fi
+
+echo "Installing herdr plugins..."
+if type "herdr" > /dev/null; then
+  herdr integration install claude
+else
+  echo "Herdr cli not installed; please install it."
 fi
