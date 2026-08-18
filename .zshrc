@@ -84,7 +84,7 @@ plugins=(
   nvm
   npm
   brew
-  #pyenv
+  # pyenv
   python
   virtualenv
   zsh-autosuggestions
