@@ -18,7 +18,7 @@ fi
 #####
 alias ls='ls -Gah1'
 alias mkdir='mkdir -p'
-alias reload='source ~/.zshrc && source ~/.zprofile'
+alias reload='exec zsh'
 alias cleardns='dscacheutil -flushcache'
 alias locate-update='/usr/libexec/locate.updatedb'
 alias python-http='python -m SimpleHTTPServer 8000'
