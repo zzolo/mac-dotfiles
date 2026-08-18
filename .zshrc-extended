@@ -26,6 +26,13 @@ alias download='curl -O'
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
 alias preview='qlmanage -p'
 
+# Use Socket firewall (sfw) installed
+if type "sfw" > /dev/null; then
+  alias npm='sfw npm'
+  alias uv='sfw uv'
+  alias pnpm='sfw pnpm'
+fi
+
 
 # LS with coreutils
 if type "gls" > /dev/null; then
