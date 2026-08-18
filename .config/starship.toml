@@ -146,7 +146,7 @@ format = '[[+$added]($added_style)/[-$deleted]($deleted_style) ](fg:color_fg0 bg
 [nodejs]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol ](fg:color_fg0 bg:color_blue)]($style)'
+format = '[[ $symbol $version ](fg:color_fg0 bg:color_blue)]($style)'
 
 [c]
 symbol = " "
@@ -171,7 +171,7 @@ format = '[[ $symbol ](fg:color_fg0 bg:color_blue)]($style)'
 [python]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol ](fg:color_fg0 bg:color_blue)]($style)'
+format = '[[ $symbol $version $virtualenv ](fg:color_fg0 bg:color_blue)]($style)'
 
 [package]
 disabled = false
