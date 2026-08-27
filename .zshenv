@@ -142,16 +142,20 @@ fi
 # Poe tasks if uv
 if type "uv" > /dev/null; then
   alias po='uv run poe'
-  if type "sfw" > /dev/null; then
-    alias po='sfw uv run poe'
-  fi
+
+  # SFW fails too often
+  # if type "sfw" > /dev/null; then
+  #   alias po='sfw uv run poe'
+  # fi
 fi
 
 # Use Socket firewall (sfw) installed
 if type "sfw" > /dev/null; then
-  alias npm='sfw npm'
-  alias uv='sfw uv'
-  alias pnpm='sfw pnpm'
+
+  # SFW fails too often
+  # alias npm='sfw npm'
+  # alias uv='sfw uv'
+  # alias pnpm='sfw pnpm'
 fi
 
 # User specific rc that shouldn't be in version control.

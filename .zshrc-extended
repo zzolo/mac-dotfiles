@@ -1,5 +1,6 @@
 # Base .zshrc should mostly be OhMyZSH setup, and this is more general
-# things to run after it.
+# things to run after it.  Note that LLM agents won't have access to that;
+# if that is needed, look at putting it in .zshenv
 
 # Starship
 if type "starship" > /dev/null; then
@@ -14,7 +15,7 @@ if type "code-insiders" > /dev/null; then
   export EDITOR=code-insiders
 fi
 
-# Core aliases
+# Personal aliases
 #####
 alias ls='ls -Gah1'
 alias mkdir='mkdir -p'
@@ -26,14 +27,6 @@ alias download='curl -O'
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
 alias preview='qlmanage -p'
 
-# Use Socket firewall (sfw) installed
-if type "sfw" > /dev/null; then
-  alias npm='sfw npm'
-  alias uv='sfw uv'
-  alias pnpm='sfw pnpm'
-fi
-
-
 # LS with coreutils
 if type "gls" > /dev/null; then
   eval $( gdircolors -b $HOME/.dircolors );
@@ -44,49 +37,3 @@ fi
 if [ -e $HOME/.zshrc-user ]; then
   source ~/.zshrc-user
 fi
-
-
-# Custom beet wrapper to handle SQLite over network
-# https://github.com/beetbox/beets/issues/1976
-#
-# TODO: Move to .zshrc-user
-function beetcopy() {
-  if type "beet" > /dev/null; then
-    if [ -e /Volumes/Multimedia/tunes/ ]; then
-      beet "$@" && \
-      echo "Beet done; copying..." && \
-      cp ~/.config/beets/config.yaml /Volumes/Multimedia/tunes/beets.conf && \
-      cp ~/.config/beets/beets.db /Volumes/Multimedia/tunes/beets.db && \
-      cp ~/.config/beets/beets.log /Volumes/Multimedia/tunes/beets.log;
-    else
-      echo "Music library not found.";
-      return 1;
-    fi
-  else
-    echo "Beet not found.";
-    return 1;
-  fi
-}
-function beetnocopy() {
-  if type "beet" > /dev/null; then
-    if [ -e /Volumes/Multimedia/tunes/ ]; then
-      beet "$@";
-    else
-      echo "Music library not found.";
-      return 1;
-    fi
-  else
-    echo "Beet not found.";
-    return 1;
-  fi
-}
-function beetget() {
-  if [ -e /Volumes/Multimedia/tunes/ ]; then
-    echo "Getting beet files..." && \
-    cp /Volumes/Multimedia/tunes/beets.conf ~/.config/beets/config.yaml && \
-    cp /Volumes/Multimedia/tunes/beets.db ~/.config/beets/beets.db  ;
-  else
-    echo "Music library not found.";
-    return 1;
-  fi
-}
